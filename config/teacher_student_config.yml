@@ -1,0 +1,13 @@
+transformer-lr: 1.0
+transformer-warmup-steps: 25000
+tau: 1.0
+skd_weight: 1.0
+attention_temperature: 2.0
+top_k: 20
+attention_logit_weight: 0.3
+use_condition_layer: True
+condition_layers: 2
+no_condition_epoch: 12
+start_condition_epoch: 32
+condition_hidden_dim: 256
+condition_weight: 1.0

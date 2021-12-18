@@ -1,0 +1,5 @@
+lmtype: "rnnlm"
+funsion: None
+num_workers: 8
+fbank_dim: 80
+gpu_ids: "0"

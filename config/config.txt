@@ -1,0 +1,49 @@
+# the configuration
+
+# general configuration
+stage=0        # start from 0 if you need to start from data preparation
+#gpu=            # will be deprecated, please use ngpu
+ngpu=1          # number of gpus ("0" uses cpu, otherwise use gpu)
+debugmode=1
+dumpdir=dump   # directory to dump full features
+verbose=1      # verbose option
+resume=${resume:=none}    # Resume the training from snapshot
+
+# optimization related
+opt=adadelta
+epochs=15
+
+# rnnlm related
+model_unit=char
+batchsize_lm=64
+dropout_lm=0.5
+input_unit_lm=256
+hidden_unit_lm=650
+lm_weight=0.2
+fusion=${fusion:=none}
+lmtype=rnnlm
+
+# general config
+train_set=train
+train_dev=dev
+recog_set="test"
+test_set="test"
+dev_set='dev'
+embed_init_file="/home/lujun/yuchen/projects/masterarbeit/data_aishell_summary/lang/sgns.wiki.char"
+checkpoints_dir="/home/lujun/yuchen/projects/masterarbeit/checkpoints_robust"
+resource_root="/home/lujun/yuchen/projects/data" # to save the resource of datasets
+dataroot="/home/lujun/yuchen/projects/masterarbeit/data_robust" # to save features of datasets
+exp_root="/home/lujun/yuchen/projects/masterarbeit/checkpoints_robust"
+config_file_general="./config/general_config.yml"  # to save general config
+
+# feature config
+parallel_noises=5
+noise_repeat_num=1
+thread_num=8
+low_snr=0
+high_snr=20
+step=5
+
+# network config
+config_file_asr="./config/train_conformer_kernel_15.yml"
+

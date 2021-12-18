@@ -1,0 +1,7 @@
+checkpoints_dir=/home/lujun/yuchen/projects/masterarbeit/checkpoints_robust
+dataroot=/home/lujun/yuchen/projects/masterarbeit/data_robust
+exp_root=/home/lujun/yuchen/projects/masterarbeit/checkpoints_robust
+dictroot=/home/lujun/yuchen/projects/masterarbeit/data_robust/lang
+lmexpdir=/home/lujun/yuchen/projects/masterarbeit/checkpoints_robust/train_rnnlm
+dict=/home/lujun/yuchen/projects/masterarbeit/data_robust/lang/train_units.txt
+embed_init_file=/home/lujun/yuchen/projects/masterarbeit/data_aishell_summary/lang/sgns.wiki.char

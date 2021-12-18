@@ -1,0 +1,55 @@
+# teacher model config
+teacher_epochs: 34
+teacher_print_freq: 1000
+teacher_validate_freq: 10000
+teacher_batch_size: 10
+teacher_name: asr_teacher
+
+# model with data augmentation and adversarial sample
+da_epochs: 34
+da_print_freq: 1000
+da_validate_freq: 10000
+da_batch_size: 10
+da_FGSM_augmentation: False
+da_epsilon_FGSM: 0.15
+da_alpha_FGSM: 0.3
+da_use_vat: True
+da_vat_epsilon: 5.0
+da_vat_delta_weight: 0.3
+da_vat_weight: 1.0
+da_vat_iter: 1
+da_p_aug: 1
+da_start_augmentation: 9
+da_use_spec_aug: True
+da_SpecF: 30
+da_SpecT: 40
+da_use_shift: True
+da_Shift_frames: 20
+da_use_random_mix_noise: True
+da_use_delta: True
+da_name: model_with_as_da
+
+# teacher student model
+ts_epochs: 40
+ts_print_freq: 1000
+ts_validate_freq: 10000
+ts_batch_size: 10
+ts_FGSM_augmentation: False
+ts_epsilon_FGSM: 0.15
+ts_alpha_FGSM: 0.3
+ts_use_vat: True
+ts_vat_epsilon: 5.0
+ts_vat_delta_weight: 0.3
+ts_vat_weight: 1.0
+ts_vat_iter: 1
+ts_p_aug: 1
+ts_start_augmentation: 9
+ts_use_spec_aug: True
+ts_SpecF: 30
+ts_SpecT: 40
+ts_use_shift: True
+ts_Shift_frames: 20
+ts_use_random_mix_noise: True
+ts_use_delta: True
+ts_name: ts_model
+
