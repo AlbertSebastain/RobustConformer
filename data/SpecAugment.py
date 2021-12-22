@@ -27,34 +27,36 @@ def time_warp(spec, W=5):
 def freq_mask(spec, F=30, num_masks=1, replace_with_zero=False):
     cloned = spec.clone()
     num_mel_channels = cloned.shape[1]
-    
-    for i in range(0, num_masks):        
-        f = random.randrange(0, F)
-        f_zero = random.randrange(0, num_mel_channels - f)
+    batch = cloned.shape[0]
+    for i in range(0, num_masks):       
+        for j in range(batch): 
+            f = random.randrange(0, F)
+            f_zero = random.randrange(0, num_mel_channels - f)
 
-        # avoids randrange error if values are equal and range is empty
-        if (f_zero == f_zero + f): return cloned
+            # avoids randrange error if values are equal and range is empty
+            if (f_zero == f_zero + f): return cloned
 
-        mask_end = random.randrange(f_zero, f_zero + f) 
-        if (replace_with_zero): cloned[0][f_zero:mask_end] = 0
-        else: cloned[0][f_zero:mask_end] = cloned.mean()
+            mask_end = random.randrange(f_zero, f_zero + f) 
+            if (replace_with_zero): cloned[j][f_zero:mask_end] = 0
+            else: cloned[j][f_zero:mask_end] = cloned[j].mean()
     
     return cloned
     
 def time_mask(spec, T=40, num_masks=1, replace_with_zero=False):
     cloned = spec.clone()
     len_spectro = cloned.shape[2]
-    
+    batch = cloned.shape[0]
     for i in range(0, num_masks):
-        t = random.randrange(0, T)
-        t_zero = random.randrange(0, len_spectro - t)
+        for j in range(batch):
+            t = random.randrange(0, T)
+            t_zero = random.randrange(0, len_spectro - t)
 
-        # avoids randrange error if values are equal and range is empty
-        if (t_zero == t_zero + t): return cloned
+            # avoids randrange error if values are equal and range is empty
+            if (t_zero == t_zero + t): return cloned
 
-        mask_end = random.randrange(t_zero, t_zero + t)
-        if (replace_with_zero): cloned[0][:,t_zero:mask_end] = 0
-        else: cloned[0][:,t_zero:mask_end] = cloned.mean()
+            mask_end = random.randrange(t_zero, t_zero + t)
+            if (replace_with_zero): cloned[j][:,t_zero:mask_end] = 0
+            else: cloned[j][:,t_zero:mask_end] = cloned[j].mean()
     return cloned
 def spec_augmentation(x,F, T, num_masks = 2):
     x = x.permute(0,2,1)
